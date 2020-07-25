@@ -3,13 +3,14 @@ param(
                [Parameter(Mandatory=$true, HelpMessage="Enter a loginId!")]
 			   [string]$id
 )
-. $env:scriptroot\Global\globaldomains.ps1
+$Environment = "prod"
+$PwdHashPath = $HOME+"\Documents\HashStore"
 $cred = get-credential $id
 $cred.password|convertFrom-SecureString| % {$pwd=$_}
 $uid=$($cred.UserName)
 $uid=$uid.replace("\","-")
 $uid=$uid.replace("@","-")
-$fn = ("init-pwd-{0}-{1}-{2}.ps1" -f $Environment, $EnvironmentUser, $uid)
+$fn = ("{0}\pwd-{1}-{2}-{3}.ps1" -f $PwdHashPath, $Environment, $env:USERNAME, $uid)
 remove-item $fn -ErrorAction SilentlyContinue
 Add-Content -path $fn  "# ***********************************************************************************************"
 Add-Content -path $fn  "# Variables"

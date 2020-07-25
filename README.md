@@ -10,7 +10,6 @@ By executing the code below the module prompts for a password if a non valid has
 For automation tasks under an service account a password hash MUST be generated under service account conext (runas).
 
 
-
 #sample user script
 import-module credentialManager
 $Environment = "prod"
