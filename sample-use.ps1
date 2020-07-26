@@ -20,4 +20,12 @@ $AdminUserSamplehash2    = Get-PasswordHash -id $AdminUserSample2 -Environment $
 #create credential object
 $credentialAdminSample2 = New-Object System.Management.Automation.PSCredential $AdminUserSample2, $AdminUserSamplehash2
 
+
+#Import-Moule AzureAD
+#$Connect-AzureAD -Credential $credentialAdminSample
+
+#$cmd = ("mssql-cli -U {0} -P {1} -d {2} -S {4} -Q {5}" -f $credentialAdminSample2.UserName, $credentialAdminSample2.GetNetworkCredential().Password, "myDB", "dbServer", "Selet * from myTable")
+#$ret = Invoke-Expression $cmd
+# process $ret
+
 write-host "finished"
